@@ -1,0 +1,27 @@
+<!--<body ng-app="">-->
+
+
+<div id="container"><!--<div id="container" ng-controller="TicTacCtrl">-->
+  <div onclick = "navCells();">
+    <div ng-repeat="col in ticTacToe">
+    <div ng-class="{sqr:true, topLine:$parent.$index !=0, leftLine:$index !=0}" ng-repeat="cell in col" ng-click="clickSquare($parent.$index, $index)"></div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+  <div id="tick_tock" class="pop_up">
+    <h2><img src="tick_tock.jpg"></br>&nbsp;&nbsp;won!</h2></div>
+
+  <div id="web" class="pop_up">
+    <h2><img src="web.jpeg"></br>&nbsp;&nbsp;won!</h2></div>
+
+  <div id="draw" class="pop_up">
+    <h2>
+      <img src="draw.jpg"></br>a draw!
+    </h2>
+  </div>
+</div>
+
+
+
+<a href="file:///Users/uralika/wdi/Tick%20Tock%20Web/TickTockWeb.html"><div id="reset"><h1>New Game</h1></div></a>

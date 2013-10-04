@@ -21,42 +21,13 @@ body {
     margin: 0 auto;
 }
 
-#cell1_1 {
-    border-right:2px solid black; 
-    border-bottom:2px solid black;
-    }
-
-#cell1_2 {
-    border-right:2px solid black; 
-    border-bottom:2px solid black;
+.topLine {
+    border-top: 2px solid black;
 }
 
-#cell1_3 {
-    border-bottom:2px solid black;
+.leftLine {
+    border-left: 3px solid black;
 }
-
-#cell2_1 {
-    border-right:2px solid black;
-    border-bottom:2px solid black;
-}
-
-#cell2_2 {
-    border-right:2px solid black;
-    border-bottom:2px solid black;
-}
-
-#cell2_3 {
-    border-bottom:2px solid black;
-}
-    
-#cell3_1 {
-    border-right:2px solid black;   
-}
-
-#cell3_2 {
-    border-right:2px solid black;
-}
-
 
 .sqr {
     float:left;
@@ -65,7 +36,7 @@ body {
     width:100px;
 }
 
-.clear {
+.clearfix {
     clear: both;
 }
 
