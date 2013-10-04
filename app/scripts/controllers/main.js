@@ -13,16 +13,17 @@ $scope.clickSquare = function(row,column,cell) {
   else
     event.target.innerHTML = "<img src='views/web.jpeg'>";
   ++playerTurn
-};
-/*
+
+
 somebodyWon = false;
 for(x=0;x<=2;x++)
   {
-  if(this.ticTacToe[0][x] == this.ticTacToe[1][x] &&
+  if (this.ticTacToe[0][x] == this.ticTacToe[1][x] &&
     this.ticTacToe[1][x] == this.ticTacToe[2][x] && 
     this.ticTacToe[0][x] != "" &&
-    this.ticTacToe[0][x] == '<img src="tick_tock.jpg">')
+    this.ticTacToe[0][x] == "<img src='views/tick_tock.jpg'>")
     {
+     	alert('hi!');
         document.getElementById("tick_tock").style.display="block";
         somebodyWon = true;
     }
@@ -30,30 +31,29 @@ for(x=0;x<=2;x++)
   if (this.ticTacToe[0][x] == this.ticTacToe[1][x] &&
     this.ticTacToe[1][x] == this.ticTacToe[2][x] && 
     this.ticTacToe[0][x] != "" &&
-    this.ticTacToe[0][x] == '<img src="web.jpeg">') 
+    this.ticTacToe[0][x] == "<img src='views/web.jpeg'>") 
     {   
         document.getElementById("web").style.display="block";
         somebodyWon = true;
-    }
+   }
 
-  if(this.ticTacToe[x][0] == this.ticTacToe[x][1] &&
+  if (this.ticTacToe[x][0] == this.ticTacToe[x][1] &&
     this.ticTacToe[x][1] == this.ticTacToe[x][2] && 
     this.ticTacToe[x][0] != "" &&
-    this.ticTacToe[x][0] == '<img src="tick_tock.jpg">')
+    this.ticTacToe[x][0] == "<img src='views/tick_tock.jpg'>")
     {
         document.getElementById("tick_tock").style.display="block";
         somebodyWon = true;
     }
-  
+ 
   if (this.ticTacToe[x][0] == this.ticTacToe[x][1] &&
     this.ticTacToe[x][1] == this.ticTacToe[x][2] && 
     this.ticTacToe[x][0] != "" &&
-    this.ticTacToe[x][0] == '<img src="web.jpeg">')
+    this.ticTacToe[x][0] == "<img src='views/web.jpeg'>")
     {
         document.getElementById("web").style.display="block";
         somebodyWon = true;
     }
-  }
 
 
 
@@ -93,10 +93,13 @@ for(x=0;x<=2;x++)
           somebodyWon = true;
 
     }
+
   if (!somebodyWon && playerTurn == 10)
    {
      document.getElementById("draw").style.display="block";
    }
-}*/
+
+}
+};
 });
 
