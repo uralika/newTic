@@ -2,12 +2,11 @@
 
 
 <div id="container"><!--<div id="container" ng-controller="TicTacCtrl">-->
-  <div onclick = "navCells();">
-    <div ng-repeat="col in ticTacToe">
-    <div ng-class="{sqr:true, topLine:$parent.$index !=0, leftLine:$index !=0}" ng-repeat="cell in col" ng-click="clickSquare($parent.$index, $index)"></div>
+    <div ng-repeat="row in ticTacToe">
+    <div ng-class="{sqr:true, topLine:$parent.$index !=0, leftLine:$index !=0}" ng-repeat="cell in row" ng-click="clickSquare(cell)">
+      <img ng-src="{{findImg(cell)}}" /></div>
     <div class="clearfix"></div>
   </div>
-</div>
 
   <div id="tick_tock" class="pop_up">
     <h2><img src="tick_tock.jpg"></br>&nbsp;&nbsp;won!</h2></div>
@@ -24,4 +23,4 @@
 
 
 
-<a href="file:///Users/uralika/wdi/Tick%20Tock%20Web/TickTockWeb.html"><div id="reset"><h1>New Game</h1></div></a>
+<div id="reset" ng-click="resetBoard()" value="Reset"><h1>New Game</h1></div></a>
