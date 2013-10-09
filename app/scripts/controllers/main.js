@@ -28,13 +28,6 @@ $scope.clickSquare = function(cell) {
     cell.val = "O";
    ++playerTurn
 
-$scope.resetBoard = function() {
-    // Simply clear out each cell in the array
-    for(rw in $scope.ticTacToe)
-      for(col in $scope.ticTacToe[rw])
-        $scope.ticTacToe[rw][col].val = "";
-    };
-
 var somebodyWon = false
 
 for(var c=0;c<=2;++c) {
