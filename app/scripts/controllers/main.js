@@ -1,12 +1,22 @@
 //'use strict';
 
-angular.module('newTicApp').controller('TicTacCtrl', function ($scope) {
+angular.module('newTicApp').controller('TicTacCtrl', function ($scope, angularFire) {
 
 $scope.ticTacToe = [[ {val:'', r:0, c:0}, {val:'', r:0, c:1}, {val:'',r:0,c:2} ],
-        [ {val:'', r:1 ,c:0}, {val:'',r:1,c:1}, {val:'',r:1,c:2}],
+        [ {val:'', r:1 ,c:0}, {val:'', r:1,c:1}, {val:'',r:1,c:2}],
         [ {val:'', r:2, c:0}, {val:'', r:2, c:1}, {val:'', r:2, c:2}]];
 
-playerTurn = 1;
+var database = new Firebase("https://tick-tock-web.firebaseio.com/list");
+var promise = angularFire(database, $scope, "ticTacToe");
+
+promise.then( function() {
+
+$scope.ticTacToe = [[ {val:'', r:0, c:0}, {val:'', r:0, c:1}, {val:'',r:0,c:2} ],
+        [ {val:'', r:1 ,c:0}, {val:'', r:1,c:1}, {val:'',r:1,c:2}],
+        [ {val:'', r:2, c:0}, {val:'', r:2, c:1}, {val:'', r:2, c:2}]];
+
+var playerTurn = 1;
+
 
 $scope.findImg = function(cell) {
   switch(cell.val)
@@ -117,5 +127,7 @@ for(var c=0;c<=2;++c) {
    }
   };
   }
+  });
 });
+
 
