@@ -40,42 +40,17 @@ body {
     clear: both;
 }
 
-#tick_tock {
+.pop_up {
     position:relative;
     width: 70%;
     height:70%;
     border: 2px dashed black;
     background-color:orange;
-    bottom:162px;
+    bottom:250px;
     left: 48px;
     opacity:.85;
     display:none;
 }
-
-#web {
-    position:relative;
-    width: 70%;
-    height:70%;
-    border: 2px dashed black;
-    background-color:orange;
-    bottom:162px;
-    left: 48px;
-    opacity:.85;
-    display:none;
-}
-
-#draw {
-    position:relative;
-    width: 70%;
-    height:70%;
-    border: 2px dashed black;
-    background-color:orange;
-    bottom:162px;
-    left: 48px;
-    opacity:.85;
-    display:none;
-}
-
 
 #reset {
     position: relative;
