@@ -72,7 +72,7 @@ for(var c=0;c<=2;++c) {
 
 
 
-  if($scope.ticTacToe[0][0].val == $scope.ticTacToe[1][1].val &&
+  if ($scope.ticTacToe[0][0].val == $scope.ticTacToe[1][1].val &&
      $scope.ticTacToe[1][1].val == $scope.ticTacToe[2][2].val &&
      $scope.ticTacToe[0][0].val != "" &&
      $scope.ticTacToe[0][0].val == "X")
@@ -91,7 +91,7 @@ for(var c=0;c<=2;++c) {
          somebodyWon = true;
       }
 
-  if($scope.ticTacToe[0][2].val == $scope.ticTacToe[1][1].val &&
+  if ($scope.ticTacToe[0][2].val == $scope.ticTacToe[1][1].val &&
      $scope.ticTacToe[1][1].val == $scope.ticTacToe[2][0].val &&
      $scope.ticTacToe[0][2].val != "" &&
      $scope.ticTacToe[0][2].val == "X")
