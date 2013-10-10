@@ -6,7 +6,7 @@ $scope.ticTacToe = [[ {val:'', r:0, c:0}, {val:'', r:0, c:1}, {val:'',r:0,c:2} ]
         [ {val:'', r:1 ,c:0}, {val:'', r:1,c:1}, {val:'',r:1,c:2}],
         [ {val:'', r:2, c:0}, {val:'', r:2, c:1}, {val:'', r:2, c:2}]];
 
-var database = new Firebase("https://tick-tock-web.firebaseio.com/list");
+var database = new Firebase("https://tick-tock-web.firebaseio.com/rooms");
 var promise = angularFire(database, $scope, "ticTacToe");
 
 promise.then( function() {
@@ -17,6 +17,9 @@ $scope.ticTacToe = [[ {val:'', r:0, c:0}, {val:'', r:0, c:1}, {val:'',r:0,c:2} ]
 
 var playerTurn = 1;
 
+$scope.tick_tockShow = false;
+$scope.webShow = false;
+$scope.drawShow = false;
 
 $scope.findImg = function(cell) {
   switch(cell.val)
@@ -47,10 +50,8 @@ for(var c=0;c<=2;++c) {
     $scope.ticTacToe[0][c].val != "" &&
     $scope.ticTacToe[0][c].val == "X")
     {
-
-        document.getElementById("tick_tock").style.display="block";
+        $scope.tick_tockShow = true;
         somebodyWon = true;
-        break;
     }
   
   if ($scope.ticTacToe[0][c].val == $scope.ticTacToe[1][c].val &&
@@ -58,7 +59,8 @@ for(var c=0;c<=2;++c) {
     $scope.ticTacToe[0][c].val != "" &&
     $scope.ticTacToe[0][c].val == "O") 
     {   
-        document.getElementById("web").style.display="block";
+        
+        $scope.webShow = true;
         somebodyWon = true;
    }
 
@@ -67,7 +69,8 @@ for(var c=0;c<=2;++c) {
     $scope.ticTacToe[c][0].val != "" &&
     $scope.ticTacToe[c][0].val == "X")
     {
-        document.getElementById("tick_tock").style.display="block";
+
+        $scope.tick_tockShow = true;
         somebodyWon = true;
     }
  
@@ -76,7 +79,7 @@ for(var c=0;c<=2;++c) {
     $scope.ticTacToe[c][0].val != "" &&
     $scope.ticTacToe[c][0].val == "O")
     {
-        document.getElementById("web").style.display="block";
+        $scope.webShow = true;
         somebodyWon = true;
     }
 
@@ -87,7 +90,7 @@ for(var c=0;c<=2;++c) {
      $scope.ticTacToe[0][0].val != "" &&
      $scope.ticTacToe[0][0].val == "X")
     {
-          document.getElementById("tick_tock").style.display="block";
+         $scope.tick_tockShow = true;
           somebodyWon = true;
       }
 
@@ -97,7 +100,7 @@ for(var c=0;c<=2;++c) {
      $scope.ticTacToe[0][0].val == "O")
       {
         
-         document.getElementById("web").style.display="block";
+        $scope.webShow = true;
          somebodyWon = true;
       }
 
@@ -106,7 +109,7 @@ for(var c=0;c<=2;++c) {
      $scope.ticTacToe[0][2].val != "" &&
      $scope.ticTacToe[0][2].val == "X")
       {
-          document.getElementById("tick_tock").style.display="block";
+          $scope.tick_tockShow = true;
           somebodyWon = true;
       }
 
@@ -115,15 +118,15 @@ for(var c=0;c<=2;++c) {
      $scope.ticTacToe[0][2].val != "" &&
      $scope.ticTacToe[0][2].val == "O")
     {
-        document.getElementById("web").style.display="block";
-        somebodyWon = true;
+          $scope.webShow = true;
+          somebodyWon = true;
   
 
     }
 
-  if (!somebodyWon && playerTurn == 10)
+  if (!somebodyWon && (playerTurn == 10))
    {
-     document.getElementById("draw").style.display="block";
+     $scope.drawShow = true;
    }
   };
   }
