@@ -2,18 +2,21 @@
 
 angular.module('newTicApp').controller('TicTacCtrl', function ($scope, angularFire) {
 
-$scope.ticTacToe = [[ {val:'', r:0, c:0}, {val:'', r:0, c:1}, {val:'',r:0,c:2} ],
+$scope.room = {};
+$scope.room.ticTacToe = [[ {val:'', r:0, c:0}, {val:'', r:0, c:1}, {val:'',r:0,c:2} ],
         [ {val:'', r:1 ,c:0}, {val:'', r:1,c:1}, {val:'',r:1,c:2}],
         [ {val:'', r:2, c:0}, {val:'', r:2, c:1}, {val:'', r:2, c:2}]];
 
+
 var database = new Firebase("https://tick-tock-web.firebaseio.com/rooms");
-var promise = angularFire(database, $scope, "ticTacToe");
+var promise = angularFire(database, $scope, "room.ticTacToe");
 
 promise.then( function() {
 
-$scope.ticTacToe = [[ {val:'', r:0, c:0}, {val:'', r:0, c:1}, {val:'',r:0,c:2} ],
+$scope.room.ticTacToe = [[ {val:'', r:0, c:0}, {val:'', r:0, c:1}, {val:'',r:0,c:2} ],
         [ {val:'', r:1 ,c:0}, {val:'', r:1,c:1}, {val:'',r:1,c:2}],
         [ {val:'', r:2, c:0}, {val:'', r:2, c:1}, {val:'', r:2, c:2}]];
+
 
 var playerTurn = 1;
 
@@ -41,43 +44,43 @@ $scope.clickSquare = function(cell) {
     cell.val = "O";
    ++playerTurn
 
-var somebodyWon = false
+var somebodyWon = false;
 
 for(var c=0;c<=2;++c) {
 
-  if ($scope.ticTacToe[0][c].val == $scope.ticTacToe[1][c].val &&
-    $scope.ticTacToe[1][c].val == $scope.ticTacToe[2][c].val && 
-    $scope.ticTacToe[0][c].val != "" &&
-    $scope.ticTacToe[0][c].val == "X")
+  if ($scope.room.ticTacToe[0][c].val == $scope.room.ticTacToe[1][c].val &&
+    $scope.room.ticTacToe[1][c].val == $scope.room.ticTacToe[2][c].val && 
+    $scope.room.ticTacToe[0][c].val != "" &&
+    $scope.room.ticTacToe[0][c].val == "X")
     {
         $scope.tick_tockShow = true;
         somebodyWon = true;
     }
   
-  if ($scope.ticTacToe[0][c].val == $scope.ticTacToe[1][c].val &&
-    $scope.ticTacToe[1][c].val == $scope.ticTacToe[2][c].val && 
-    $scope.ticTacToe[0][c].val != "" &&
-    $scope.ticTacToe[0][c].val == "O") 
+  if ($scope.room.ticTacToe[0][c].val == $scope.room.ticTacToe[1][c].val &&
+    $scope.room.ticTacToe[1][c].val == $scope.room.ticTacToe[2][c].val && 
+    $scope.room.ticTacToe[0][c].val != "" &&
+    $scope.room.ticTacToe[0][c].val == "O") 
     {   
         
         $scope.webShow = true;
         somebodyWon = true;
    }
 
-  if ($scope.ticTacToe[c][0].val == $scope.ticTacToe[c][1].val &&
-    $scope.ticTacToe[c][1].val == $scope.ticTacToe[c][2].val && 
-    $scope.ticTacToe[c][0].val != "" &&
-    $scope.ticTacToe[c][0].val == "X")
+  if ($scope.room.ticTacToe[c][0].val == $scope.room.ticTacToe[c][1].val &&
+    $scope.room.ticTacToe[c][1].val == $scope.room.ticTacToe[c][2].val && 
+    $scope.room.ticTacToe[c][0].val != "" &&
+    $scope.room.ticTacToe[c][0].val == "X")
     {
 
         $scope.tick_tockShow = true;
         somebodyWon = true;
     }
  
-  if ($scope.ticTacToe[c][0].val == $scope.ticTacToe[c][1].val &&
-    $scope.ticTacToe[c][1].val == $scope.ticTacToe[c][2].val && 
-    $scope.ticTacToe[c][0].val != "" &&
-    $scope.ticTacToe[c][0].val == "O")
+  if ($scope.room.ticTacToe[c][0].val == $scope.room.ticTacToe[c][1].val &&
+    $scope.room.ticTacToe[c][1].val == $scope.room.ticTacToe[c][2].val && 
+    $scope.room.ticTacToe[c][0].val != "" &&
+    $scope.room.ticTacToe[c][0].val == "O")
     {
         $scope.webShow = true;
         somebodyWon = true;
@@ -85,38 +88,38 @@ for(var c=0;c<=2;++c) {
 
 
 
-  if ($scope.ticTacToe[0][0].val == $scope.ticTacToe[1][1].val &&
-     $scope.ticTacToe[1][1].val == $scope.ticTacToe[2][2].val &&
-     $scope.ticTacToe[0][0].val != "" &&
-     $scope.ticTacToe[0][0].val == "X")
+  if ($scope.room.ticTacToe[0][0].val == $scope.room.ticTacToe[1][1].val &&
+     $scope.room.ticTacToe[1][1].val == $scope.room.ticTacToe[2][2].val &&
+     $scope.room.ticTacToe[0][0].val != "" &&
+     $scope.room.ticTacToe[0][0].val == "X")
     {
          $scope.tick_tockShow = true;
           somebodyWon = true;
       }
 
-   if ($scope.ticTacToe[0][0].val == $scope.ticTacToe[2][2].val &&
-     $scope.ticTacToe[1][1].val == $scope.ticTacToe[2][2].val &&
-     $scope.ticTacToe[0][0].val != "" &&
-     $scope.ticTacToe[0][0].val == "O")
+   if ($scope.room.ticTacToe[0][0].val == $scope.room.ticTacToe[2][2].val &&
+     $scope.room.ticTacToe[1][1].val == $scope.room.ticTacToe[2][2].val &&
+     $scope.room.ticTacToe[0][0].val != "" &&
+     $scope.room.ticTacToe[0][0].val == "O")
       {
         
         $scope.webShow = true;
          somebodyWon = true;
       }
 
-  if ($scope.ticTacToe[0][2].val == $scope.ticTacToe[1][1].val &&
-     $scope.ticTacToe[1][1].val == $scope.ticTacToe[2][0].val &&
-     $scope.ticTacToe[0][2].val != "" &&
-     $scope.ticTacToe[0][2].val == "X")
+  if ($scope.room.ticTacToe[0][2].val == $scope.room.ticTacToe[1][1].val &&
+     $scope.room.ticTacToe[1][1].val == $scope.room.ticTacToe[2][0].val &&
+     $scope.room.ticTacToe[0][2].val != "" &&
+     $scope.room.ticTacToe[0][2].val == "X")
       {
           $scope.tick_tockShow = true;
           somebodyWon = true;
       }
 
-  if ($scope.ticTacToe[0][2].val == $scope.ticTacToe[1][1].val &&
-     $scope.ticTacToe[1][1].val == $scope.ticTacToe[2][0].val &&
-     $scope.ticTacToe[0][2].val != "" &&
-     $scope.ticTacToe[0][2].val == "O")
+  if ($scope.room.ticTacToe[0][2].val == $scope.room.ticTacToe[1][1].val &&
+     $scope.room.ticTacToe[1][1].val == $scope.room.ticTacToe[2][0].val &&
+     $scope.room.ticTacToe[0][2].val != "" &&
+     $scope.room.ticTacToe[0][2].val == "O")
     {
           $scope.webShow = true;
           somebodyWon = true;
