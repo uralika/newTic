@@ -2,20 +2,53 @@
 
 angular.module('newTicApp').controller('TicTacCtrl', function ($scope, angularFire) {
 
-$scope.room = {};
-$scope.room.ticTacToe = [[ {val:'', r:0, c:0}, {val:'', r:0, c:1}, {val:'',r:0,c:2} ],
-        [ {val:'', r:1 ,c:0}, {val:'', r:1,c:1}, {val:'',r:1,c:2}],
-        [ {val:'', r:2, c:0}, {val:'', r:2, c:1}, {val:'', r:2, c:2}]];
-
-
-var database = new Firebase("https://tick-tock-web.firebaseio.com/rooms");
-var promise = angularFire(database, $scope, "room.ticTacToe");
-
-promise.then( function() {
+$scope.room = [];
+$scope.queue = {};
+var playerTurn = 1;
 
 $scope.room.ticTacToe = [[ {val:'', r:0, c:0}, {val:'', r:0, c:1}, {val:'',r:0,c:2} ],
         [ {val:'', r:1 ,c:0}, {val:'', r:1,c:1}, {val:'',r:1,c:2}],
         [ {val:'', r:2, c:0}, {val:'', r:2, c:1}, {val:'', r:2, c:2}]];
+
+
+var room = new Firebase("https://tick-tock-web.firebaseio.com/rooms");
+angularFire(room, $scope, "room.ticTacToe").then( function() {
+
+  var queue = new Firebase("https://tick-tock-web.firebaseio.com/queue");
+  angularFire(queue, $scope, "queue").then( function () {
+
+    if ($scope.queue.roomId == undefined) {
+      console.log("I'm player 1");
+      $scope.player = "p1";
+
+      var newRoom = {
+        board: [[ {val:'', r:0, c:0}, {val:'', r:0, c:1}, {val:'',r:0,c:2} ],
+        [ {val:'', r:1 ,c:0}, {val:'', r:1,c:1}, {val:'',r:1,c:2}],
+        [ {val:'', r:2, c:0}, {val:'', r:2, c:1}, {val:'', r:2, c:2}]],
+        turn: "p1",
+        somebodyWon: false,
+        playerTurn: 0,
+        waiting: true
+      };
+
+    $scope.roomId = $scope.room.push(newRoom) - 1;
+    $scope.queue.roomId = $scope.roomId;
+    console.log("Player 1's game is: " + $scope.roomId);
+
+
+    } else {
+      console.log("I'm player 2");
+      $scope.player = "p2";
+      $scope.roomId = $scope.queue.roomId;
+      $scope.queue = {};
+      console.log("Player 2's game is: " + $scope.roomId);
+    }
+
+  });
+
+$scope.room.ticTacToe = [[ {val:'', r:0, c:0}, {val:'', r:0, c:1}, {val:'',r:0,c:2} ],
+        [ {val:'', r:1 ,c:0}, {val:'', r:1,c:1}, {val:'',r:1,c:2}],
+        [ {val:'', r:2, c:0}, {val:'', r:2, c:1}, {val:'', r:2, c:2} ]];
 
 
 var playerTurn = 1;
@@ -135,5 +168,7 @@ for(var c=0;c<=2;++c) {
   }
   });
 });
+
+
 
 
