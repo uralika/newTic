@@ -82,7 +82,7 @@ $scope.tick_tockShow = false;
 $scope.webShow = false;
 $scope.drawShow = false;
 
-$scope.findImg = function(cell) {
+/*$scope.findImg = function(cell) {
   switch(cell.val)
   {
     case "X":
@@ -90,7 +90,7 @@ $scope.findImg = function(cell) {
     case "O":
     return "images/web.jpeg";
   }
-};
+};*/
 
 $scope.clickSquare = function(cell) {
   var tic = $scope.ticTacToe;

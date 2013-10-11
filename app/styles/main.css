@@ -1,3 +1,12 @@
+
+.x {
+    background-image: url('../../images/tick_tock.jpg');
+}
+
+.o {
+    background-image: url('../../images/web.jpeg');
+}
+
 h1 {
     text-align: left;
     font-family: "Courier new";

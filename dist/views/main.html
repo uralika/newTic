@@ -3,24 +3,23 @@
 
 <div id="container"><!--<div id="container" ng-controller="TicTacCtrl">-->
     <div ng-repeat="row in ticTacToe">
-    <div ng-class="{sqr:true, topLine:$parent.$index !=0, leftLine:$index !=0}" ng-repeat="cell in row" ng-click="clickSquare(cell)">
-     <img ng-src="{{findImg(cell)}}"></div>
+    <div ng-class="{sqr:true, topLine:$parent.$index !=0, leftLine:$index !=0, x: cell.val =='X', o: cell.val == 'O'}" ng-repeat="cell in row" ng-click="clickSquare(cell)"></div>
     <div class="clearfix"></div>
   </div>
 
   <div ng-show="tick_tockShow" class="pop_up"><a href="index.html">
-    <h2><br><br><br><img src="../../images/92bd6293.tick_tock.jpg">&nbsp;&nbsp;won!</h2></a></div>
+    <h2><br><br><br><img src="/images/92bd6293.tick_tock.jpg">&nbsp;&nbsp;won!</h2></a></div>
 
   <div ng-show="webShow" class="pop_up"><a href="index.html">
-    <h2><br><br><br><img src="../../images/c2783d93.web.jpeg">&nbsp;&nbsp;won!</h2></a></div>
+    <h2><br><br><br><img src="/images/c2783d93.web.jpeg">&nbsp;&nbsp;won!</h2></a></div>
 
   <div ng-show="drawShow" class="pop_up"><a href="index.html">
     <h2><br><br><br>
-      <img src="../../images/c3186262.draw.jpg">a draw!
+      <img src="/images/c3186262.draw.jpg">a draw!
     </h2></a></div>
   <div ng-show="waiting" class="pop_up"><h2><br><br><br>
-      <img src="../../images/467b2c78.opponent_search.jpg"><br>Looking for opponent...</h2></div>
-</div>
+      <img src="/images/467b2c78.opponent_search.jpg"><br>Looking for opponent...</h2></div>
+
 
 
 
