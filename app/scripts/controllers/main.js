@@ -86,9 +86,9 @@ $scope.findImg = function(cell) {
   switch(cell.val)
   {
     case "X":
-    return "../../images/tick_tock.jpg";
+    return "images/tick_tock.jpg";
     case "O":
-    return "../../images/web.jpeg";
+    return "images/web.jpeg";
   }
 }
 
