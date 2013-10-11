@@ -90,7 +90,7 @@ $scope.findImg = function(cell) {
     case "O":
     return "images/web.jpeg";
   }
-}
+};
 
 $scope.clickSquare = function(cell) {
   var tic = $scope.ticTacToe;
