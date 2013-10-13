@@ -24,7 +24,7 @@ angularFire(room, $scope, "room").then( function() {
       var newRoom = {
         ticTacToe: [[ {val:'', r:0, c:0}, {val:'', r:0, c:1}, {val:'',r:0,c:2} ],
         [ {val:'', r:1 ,c:0}, {val:'', r:1,c:1}, {val:'',r:1,c:2}],
-        [ {val:'', r:2, c:0}, {val:'', r:2, c:1}, {val:'', r:2, c:2}]],
+        [ {val:'', r:2, c:0}, {val:'', r:2, c:1}, {val:'', r:2, c:2} ]],
         turn: "p1",
         somebodyWon: false,
         playerTurn: 0,
