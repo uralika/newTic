@@ -71,9 +71,9 @@ $scope.playMove = function (cell) {
 };
 
 
-$scope.ticTacToe = [[ {val:'', r:0, c:0}, {val:'', r:0, c:1}, {val:'',r:0,c:2} ],
+/*$scope.ticTacToe = [[ {val:'', r:0, c:0}, {val:'', r:0, c:1}, {val:'',r:0,c:2} ],
         [ {val:'', r:1 ,c:0}, {val:'', r:1,c:1}, {val:'',r:1,c:2}],
-        [ {val:'', r:2, c:0}, {val:'', r:2, c:1}, {val:'', r:2, c:2} ]];
+        [ {val:'', r:2, c:0}, {val:'', r:2, c:1}, {val:'', r:2, c:2} ]];*/
 
 
 var playerTurn = 1;
