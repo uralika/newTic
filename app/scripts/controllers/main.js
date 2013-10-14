@@ -27,7 +27,7 @@ angularFire(room, $scope, "room").then( function() {
         [ {val:'', r:2, c:0}, {val:'', r:2, c:1}, {val:'', r:2, c:2} ]],
         turn: "p1",
         somebodyWon: false,
-        playerTurn: 0,
+        playerTurn: 1,
         waiting: true
       };
 
@@ -41,17 +41,17 @@ angularFire(room, $scope, "room").then( function() {
       $scope.player = "p2";
       $scope.roomId = $scope.queue.roomId;
       $scope.queue = {};
-      console.log("Player 2's game is: " + $scope.roomId);
-      $scope.room($scope.roomId).waiting = false;
+      $scope.room[$scope.roomId].waiting = false;
+      console.log("Player 2's game is: " + $scope.roomId);    
     }
 
-  });
+  }); //? to take out?
 
  //});
 
-$scope.hello = function () {
+/*$scope.hello = function () {
   $scope.room[$scope.roomId].ticTacToe[0][0] = "Hello!";
-};
+};*/
 //});
 
 $scope.playMove = function (cell) {
@@ -93,94 +93,94 @@ $scope.drawShow = false;
 };*/
 
 $scope.clickSquare = function(cell) {
-  var tic = $scope.ticTacToe;
+ // var tic = $scope.ticTacToe;
   if(cell.val != "")
     return;
-  if(playerTurn % 2 == 1) 
+  if($scope.room[$scope.roomId].playerTurn % 2 == 1) 
     cell.val = "X";
   else
     cell.val = "O";
-   ++playerTurn
+   ++$scope.room[$scope.roomId].playerTurn;
 
 var somebodyWon = false;
 
 for(var c=0;c<=2;++c) {
 
-  if ($scope.ticTacToe[0][c].val == $scope.ticTacToe[1][c].val &&
-    $scope.ticTacToe[1][c].val == $scope.ticTacToe[2][c].val && 
-    $scope.ticTacToe[0][c].val != "" &&
-    $scope.ticTacToe[0][c].val == "X")
+  if ($scope.room[$scope.roomId].ticTacToe[0][c].val == $scope.room[$scope.roomId].ticTacToe[1][c].val &&
+    $scope.room[$scope.roomId].ticTacToe[1][c].val == $scope.room[$scope.roomId].ticTacToe[2][c].val && 
+    $scope.room[$scope.roomId].ticTacToe[0][c].val != "" &&
+    $scope.room[$scope.roomId].ticTacToe[0][c].val == "X")
     {
         $scope.tick_tockShow = true;
-        somebodyWon = true;
+        $scope.room[$scope.roomId].somebodyWon = true;
     }
   
-  if ($scope.ticTacToe[0][c].val == $scope.ticTacToe[1][c].val &&
-    $scope.ticTacToe[1][c].val == $scope.ticTacToe[2][c].val && 
-    $scope.ticTacToe[0][c].val != "" &&
-    $scope.ticTacToe[0][c].val == "O") 
+  if ($scope.room[$scope.roomId].ticTacToe[0][c].val == $scope.room[$scope.roomId].ticTacToe[1][c].val &&
+    $scope.room[$scope.roomId].ticTacToe[1][c].val == $scope.room[$scope.roomId].ticTacToe[2][c].val && 
+    $scope.room[$scope.roomId].ticTacToe[0][c].val != "" &&
+    $scope.room[$scope.roomId].ticTacToe[0][c].val == "O") 
     {   
         
         $scope.webShow = true;
-        somebodyWon = true;
+        $scope.room[$scope.roomId].somebodyWon = true;
    }
 
-  if ($scope.ticTacToe[c][0].val == $scope.ticTacToe[c][1].val &&
-    $scope.ticTacToe[c][1].val == $scope.ticTacToe[c][2].val && 
-    $scope.ticTacToe[c][0].val != "" &&
-    $scope.ticTacToe[c][0].val == "X")
+  if ($scope.room[$scope.roomId].ticTacToe[c][0].val == $scope.room[$scope.roomId].ticTacToe[c][1].val &&
+    $scope.room[$scope.roomId].ticTacToe[c][1].val == $scope.room[$scope.roomId].ticTacToe[c][2].val && 
+    $scope.room[$scope.roomId].ticTacToe[c][0].val != "" &&
+    $scope.room[$scope.roomId].ticTacToe[c][0].val == "X")
     {
 
         $scope.tick_tockShow = true;
-        somebodyWon = true;
+        $scope.room[$scope.roomId].somebodyWon = true;
     }
  
-  if ($scope.ticTacToe[c][0].val == $scope.ticTacToe[c][1].val &&
-    $scope.ticTacToe[c][1].val == $scope.ticTacToe[c][2].val && 
-    $scope.ticTacToe[c][0].val != "" &&
-    $scope.ticTacToe[c][0].val == "O")
+  if ($scope.room[$scope.roomId].ticTacToe[c][0].val == $scope.room[$scope.roomId].ticTacToe[c][1].val &&
+    $scope.room[$scope.roomId].ticTacToe[c][1].val == $scope.room[$scope.roomId].ticTacToe[c][2].val && 
+    $scope.room[$scope.roomId].ticTacToe[c][0].val != "" &&
+    $scope.room[$scope.roomId].ticTacToe[c][0].val == "O")
     {
         $scope.webShow = true;
-        somebodyWon = true;
+        $scope.room[$scope.roomId].somebodyWon = true;
     }
 
 
 
-  if ($scope.ticTacToe[0][0].val == $scope.ticTacToe[1][1].val &&
-     $scope.ticTacToe[1][1].val == $scope.ticTacToe[2][2].val &&
-     $scope.ticTacToe[0][0].val != "" &&
-     $scope.ticTacToe[0][0].val == "X")
+  if ($scope.room[$scope.roomId].ticTacToe[0][0].val == $scope.room[$scope.roomId].ticTacToe[1][1].val &&
+     $scope.room[$scope.roomId].ticTacToe[1][1].val == $scope.room[$scope.roomId].ticTacToe[2][2].val &&
+     $scope.room[$scope.roomId].ticTacToe[0][0].val != "" &&
+     $scope.room[$scope.roomId].ticTacToe[0][0].val == "X")
     {
          $scope.tick_tockShow = true;
-          somebodyWon = true;
+         $scope.room[$scope.roomId].somebodyWon = true;
       }
 
-   if ($scope.ticTacToe[0][0].val == $scope.ticTacToe[2][2].val &&
-     $scope.ticTacToe[1][1].val == $scope.ticTacToe[2][2].val &&
-     $scope.ticTacToe[0][0].val != "" &&
-     $scope.ticTacToe[0][0].val == "O")
+   if ($scope.room[$scope.roomId].ticTacToe[0][0].val == $scope.room[$scope.roomId].ticTacToe[2][2].val &&
+     $scope.room[$scope.roomId].ticTacToe[1][1].val == $scope.room[$scope.roomId].ticTacToe[2][2].val &&
+     $scope.room[$scope.roomId].ticTacToe[0][0].val != "" &&
+     $scope.room[$scope.roomId].ticTacToe[0][0].val == "O")
       {
         
         $scope.webShow = true;
-         somebodyWon = true;
+        $scope.room[$scope.roomId].somebodyWon = true;
       }
 
-  if ($scope.ticTacToe[0][2].val == $scope.ticTacToe[1][1].val &&
-     $scope.ticTacToe[1][1].val == $scope.ticTacToe[2][0].val &&
-     $scope.ticTacToe[0][2].val != "" &&
-     $scope.ticTacToe[0][2].val == "X")
+  if ($scope.room[$scope.roomId].ticTacToe[0][2].val == $scope.room[$scope.roomId].ticTacToe[1][1].val &&
+     $scope.room[$scope.roomId].ticTacToe[1][1].val == $scope.room[$scope.roomId].ticTacToe[2][0].val &&
+     $scope.room[$scope.roomId].ticTacToe[0][2].val != "" &&
+     $scope.room[$scope.roomId].ticTacToe[0][2].val == "X")
       {
           $scope.tick_tockShow = true;
-          somebodyWon = true;
+          $scope.room[$scope.roomId].somebodyWon = true;
       }
 
-  if ($scope.ticTacToe[0][2].val == $scope.ticTacToe[1][1].val &&
-     $scope.ticTacToe[1][1].val == $scope.ticTacToe[2][0].val &&
-     $scope.ticTacToe[0][2].val != "" &&
-     $scope.ticTacToe[0][2].val == "O")
+  if ($scope.room[$scope.roomId].ticTacToe[0][2].val == $scope.room[$scope.roomId].ticTacToe[1][1].val &&
+     $scope.room[$scope.roomId].ticTacToe[1][1].val == $scope.room[$scope.roomId].ticTacToe[2][0].val &&
+     $scope.room[$scope.roomId].ticTacToe[0][2].val != "" &&
+     $scope.room[$scope.roomId].ticTacToe[0][2].val == "O")
     {
           $scope.webShow = true;
-          somebodyWon = true;
+          $scope.room[$scope.roomId].somebodyWon = true;
   
 
     }

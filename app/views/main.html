@@ -2,7 +2,7 @@
 
 
 <div id="container"><!--<div id="container" ng-controller="TicTacCtrl">-->
-    <div ng-repeat="row in ticTacToe">
+    <div ng-repeat="row in room[roomId].ticTacToe">
     <div ng-class="{sqr:true, topLine:$parent.$index !=0, leftLine:$index !=0, x: cell.val =='X', o: cell.val == 'O'}" ng-repeat="cell in row" ng-click="clickSquare(cell)" /></div>
     <div class="clearfix"></div>
   </div>
