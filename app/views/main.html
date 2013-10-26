@@ -1,19 +1,20 @@
-<!--<body ng-app="">-->
+<!--would use if not in yeoman<body ng-app="">-->
 
 
-<div id="container"><!--<div id="container" ng-controller="TicTacCtrl">-->
-    <div ng-repeat="row in room[roomId].ticTacToe">
-    <div ng-class="{sqr:true, topLine:$parent.$index !=0, leftLine:$index !=0, x: cell.val =='X', o: cell.val == 'O'}" ng-repeat="cell in row" ng-click="clickSquare(cell)" /></div>
-    <div class="clearfix"></div>
+<div id="container"><!--Don't need to use in yeoman<div id="container" ng-controller="TicTacCtrl">-->
+  <div ng-repeat="row in room[roomId].ticTacToe">
+    <div ng-class="{sqr:true, topLine:$parent.$index !=0, leftLine:$index !=0, x: cell.val =='X', o: cell.val == 'O'}" ng-repeat="cell in row" ng-click="clickSquare(cell)" />
   </div>
+    <div class="clearfix"></div>
+</div>
 
-  <div ng-show="tick_tockShow" class="pop_up"><a href="index.html">
+<div ng-show="tick_tockShow" class="pop_up"><a href="index.html">
     <h2><br /><br /><br /><img src="/images/tick_tock.jpg"><br />&nbsp;&nbsp;won!</h2></a></div>
 
-  <div ng-show="webShow" class="pop_up"><a href="index.html">
+<div ng-show="webShow" class="pop_up"><a href="index.html">
     <h2><br /><br /><br /><img src="/images/web.jpeg"><br />&nbsp;&nbsp;won!</h2></a></div>
 
-  <div ng-show="drawShow" class="pop_up"><a href="index.html">
+<div ng-show="drawShow" class="pop_up"><a href="index.html">
     <h2><br /><br /><br />
       <img src="/images/draw.jpg"><br />a draw!
     </h2></a></div>
@@ -23,4 +24,4 @@
 
 
 
-<div id="reset"><a href="index.html"><h1>New Game</h1></a></div><!--instead of div id -->
+<div id="reset"><a href="index.html"><h1>New Game</h1></a></div>
